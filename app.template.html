@@ -1,0 +1,47 @@
+<div>
+  <button class="chatbot-toggler" ng-click="$ctrl.toggleChatbot()">
+    <span class="material-symbols-outlined">support_agent</span>
+    <span class="btn-text">Онлайн помощник</span>
+  </button>
+
+  <div class="chatbot">
+    <!-- <header>
+      <h2>Онлайн помощник</h2>
+      <span class="close-btn material-symbols-outlined" ng-click="$ctrl.closeChatBot()">close</span>
+    </header> -->
+    <ul class="chatbox">
+      <button ng-if="($ctrl.historyData.length > 1 || $ctrl.createdElements.length > 2) && !$ctrl.isLoading"  
+              class="delete-btn"
+              ng-click="$ctrl.deleteChatHistory()"
+      >
+        <span class="material-symbols-outlined">
+          delete
+          </span>
+        <p>Очистить историю</p>
+      </button>
+
+      <div class="loader" ng-if="$ctrl.isLoading"></div>
+      
+      <li class="chat incoming" ng-if="$ctrl.historyData.length === 0 && !$ctrl.isLoading">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Добро пожаловать в сервис поддержки SU <br/>Чем я могу помочь вам?</p>
+      </li>
+
+      <div ng-repeat="entry in $ctrl.historyData" ng-if="!$ctrl.isLoading">
+        <li class="chat outgoing">
+          <p>{{ entry.question }}</p>
+        </li>
+  
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>{{ entry.answer }}</p>
+        </li>
+      </div>
+
+    </ul>
+    <div class="chat-input">
+      <textarea placeholder="Введите сообщение..." required></textarea>
+      <span id="send-btn" class="material-symbols-outlined" ng-click="$ctrl.handlSendClick()">send</span>
+    </div>
+  </div>
+</div>
