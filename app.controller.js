@@ -10,6 +10,12 @@ function ChatBotController($http, $window, $scope)  {
     ctrl.toggleChatbot()
   };
 
+  ctrl.closeKeyboard = function() {
+    var input = $window.document.querySelector('.chat-input textarea');
+    input.blur();
+    console.log('click')
+  };
+
   function createChatLi(message, className) {
     const chatLi = $window.document.createElement("li")
     chatLi.classList.add("chat", className);

@@ -204,7 +204,7 @@ body {
 
 .chatbot .chat-input {
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
   width: 100%;
   display: flex;
   gap: 5px;
